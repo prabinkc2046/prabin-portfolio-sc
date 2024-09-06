@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { Card } from "../../../styles/common.styled";
 
-export const SkillsContainer = styled.div`
+export const SkillsContainer = styled(Card)`
   padding: 20px;
   display: flex;
   flex-direction: column;

@@ -16,7 +16,7 @@ export default function ListSkills() {
   
   return (
    
-    <SkillsContainer>
+    <SkillsContainer >
         <SkillsTitle id='technical-skills-title'>
           Technical Skills
         </SkillsTitle>

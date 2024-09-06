@@ -1,4 +1,3 @@
-import './Modal.css';
 import { ModalContainer, ModalContent, CloseButton } from './Modal.styled';
 type ModalProps = {
     content: React.ReactNode;
