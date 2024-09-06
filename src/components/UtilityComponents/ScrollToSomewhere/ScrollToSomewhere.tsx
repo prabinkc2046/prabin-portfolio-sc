@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
-import './ScrollToSomewhere.css';
-
+import { ScrollToSomewhereButton } from './ScrollToSomewhere.styled';
 
 type ScrollToSomewhereProp = {
     id: string;
@@ -8,7 +7,7 @@ type ScrollToSomewhereProp = {
     delayTime?: number
 }
 
-export default function ScrollToSomewhere({id, label, delayTime=1000}: ScrollToSomewhereProp) {
+export default function ScrollToSomewhere({id, label='Go somewhere', delayTime=1000}: ScrollToSomewhereProp) {
 const [visible, setVisible] = useState(false)
 
 useEffect(() => {
@@ -34,8 +33,9 @@ const handleScroll = () => {
     }
 }
   return (
-    <button onClick={handleScroll} className={`scroll-to-somewhere-button ${visible ? 'visible' : ''}`}>
-      {label ? label : 'Go somewhere'}
-    </button>
+  
+    <ScrollToSomewhereButton onClick={handleScroll} visible={visible}>
+      {label}
+    </ScrollToSomewhereButton>
   )
 }

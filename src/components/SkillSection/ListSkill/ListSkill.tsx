@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import './ListSkill.css';
 import Skill from '../Skill/Skill';
 import ScrollToSomewhere from '../../UtilityComponents/ScrollToSomewhere/ScrollToSomewhere';
-import "@fortawesome/fontawesome-free/css/all.min.css"; // Import Font Awesome CSS
 import { categorizedSkills, defaultSkillArea } from '../../../CONSTANT/CONSTANT';
+import { SkillsContainer, SkillsTitle,SkillsAreaContainer } from './ListSkill.styled';
+import { PortfolioSectionNavbar, PortfolioSectionNavItem } from '../../../styles/common.styled';
 
 export default function ListSkills() {
   const [selectedArea, setSelectedArea] = useState(defaultSkillArea);
@@ -15,34 +15,38 @@ export default function ListSkills() {
   const filteredSkillArea = selectedArea === 'All' ? categorizedSkills : categorizedSkills.filter(area => area.relatedArea === selectedArea)
   
   return (
-    <div className="skills card">
-      <h3 id='technical-skills-title'>Technical Skills</h3>
+   
+    <SkillsContainer>
+        <SkillsTitle id='technical-skills-title'>
+          Technical Skills
+        </SkillsTitle>
+        
+        <PortfolioSectionNavbar>
+          {skillArea.map(area => (
+          
+              <PortfolioSectionNavItem
+              key={area}
+              onClick={() => setSelectedArea(area)} 
+              isSelected={selectedArea === area}>
+                  {area}
+              </PortfolioSectionNavItem>
+          ))}
+      </PortfolioSectionNavbar>
 
-      {/* Navbar for skill area */}
-      <nav className='portfolio-section-navbar'>
-        {skillArea.map(area => (
-          <button
-          key={area}
-          className={`portfolio-section-nav-item ${selectedArea === area ? 'active' : ''}`}
-          onClick={() => setSelectedArea(area)}
-          >
-            {area}
-          </button>
-        ))}
-      </nav>
-      <div className="skills-area-container">
-        {filteredSkillArea.map((skillGroup) => (
-          <Skill
-          key={skillGroup.relatedArea}
-          isOpen={selectedArea === 'All' || selectedArea === skillGroup.relatedArea}
-          skillGroup={skillGroup}
-          />
-        ))}
-      </div>
+      <SkillsAreaContainer >
+          {filteredSkillArea.map((skillGroup) => (
+              <Skill
+              key={skillGroup.relatedArea}
+              isOpen={selectedArea === 'All' || selectedArea === skillGroup.relatedArea}
+              skillGroup={skillGroup}
+              />
+          ))}
+      </SkillsAreaContainer>
+
+      {/* Show go to top button only when All skills is selected */}
+      {selectedArea === 'All' &&  <ScrollToSomewhere label={'Back to Top'} id={'technical-skills-title'}/>}
       
-
-    {/* Show go to top button only when All skills is selected */}
-    {selectedArea === 'All' &&  <ScrollToSomewhere label={'Back to Top'} id={'technical-skills-title'}/>}
-    </div>
+    </SkillsContainer>
+  
   );
 }

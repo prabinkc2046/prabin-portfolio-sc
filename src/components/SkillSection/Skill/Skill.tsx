@@ -1,6 +1,16 @@
 import { useEffect, useState } from 'react';
-import './Skill.css';
+
 import type { CategorizedSkill} from '../../../CONSTANT/CONSTANT.types';
+import { 
+    SkillsCard,
+    SkillsContainer,
+    SkillsCategory,
+    SkillStyled,
+    SkillIcon,
+    SkillBar,
+    SkillLevel, 
+    SkillName
+} from './Skill.styled';
 
 type SkillProps = {
     skillGroup: CategorizedSkill;
@@ -17,31 +27,32 @@ export default function Skill({ skillGroup, isOpen }: SkillProps) {
 
     
     return (
-            <div
-                className={`skills-card box-3d ${isOpen ? 'open' : ''}`}
-                key={skillGroup.relatedArea}
-                
-            >
-                    <h4 className="skills-category">
-                        {skillGroup.relatedArea}
-                    </h4>
-               
-                <div className="skills-container">
-                    {skillGroup.skills.map((skill) => (
-                          <div className="skill" key={skill.name}>
-                            <i className={skill.icon}></i>
-                            <span className="skill-name">{skill.name}</span>
-                            <div className="skill-bar">
-                                <div
-                                    className={`skill-level ${loaded ? 'loaded' : ''}`}
-                                    style={{ width: `${loaded ? skill.level : 0}%` }}
-                                ></div>
-                            </div>
-                        </div>
-                    ))}
-              </div>
+            
+            <SkillsCard isOpen={isOpen}>
+                <SkillsCategory>
+                    {skillGroup.relatedArea}
+                </SkillsCategory>
 
-                </div>
+                <SkillsContainer isOpen={isOpen}>
+                    {skillGroup.skills.map((skill) => (
+                            <SkillStyled key={skill.name}>
+
+                                <SkillIcon className={skill.icon}/>
+
+                                <SkillName>
+                                    {skill.name}
+                                </SkillName>
+
+                                <SkillBar className="skill-bar">
+                                    <SkillLevel level={skill.level} loaded={loaded}/>
+                                </SkillBar>
+
+                            </SkillStyled>
+                    ))}
+                </SkillsContainer>
+            </SkillsCard>
+
+        
             
        
     );

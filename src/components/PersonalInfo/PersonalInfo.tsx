@@ -1,21 +1,20 @@
-import './PersonalInfo.css';
 import { profileIntro } from '../../CONSTANT/CONSTANT';
-
+import { PersonalInfoStyled, ProfilePhotoContainer, ProfilePhoto, PersonalText } from './PersonalInfo.styled';
 
 export default function PersonalInfo() {
   return (
-    <>
-      <div className="card personal-info fade-in">
-        <div className="profile-photo-container">
-          <img
-            className="profile-photo"
-          />
-        </div>
-        <div className="personal-text">
-          <h2>Prabin K C</h2>
-          <p>{profileIntro}</p>
-        </div>
-      </div>
-    </>
+    
+    <PersonalInfoStyled>
+
+      <ProfilePhotoContainer>
+        <ProfilePhoto />
+      </ProfilePhotoContainer>
+
+      <PersonalText>
+        <h2>Prabin K C</h2>
+        <p>{profileIntro}</p>
+      </PersonalText>
+
+    </PersonalInfoStyled>
   );
 }
