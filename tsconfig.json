@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",                // Set the target ECMAScript version
+    "module": "ESNext",                // Use the latest module system
+    "moduleResolution": "node",        // Resolve modules the same way Node.js does
+    "lib": ["ESNext", "DOM"],          // Include the latest ES features and DOM library
+    "strict": true,                    // Enable all strict type-checking options
+    "esModuleInterop": true,           // Enable interoperability between CommonJS and ES modules
+    "skipLibCheck": true,              // Skip type checking of declaration files for faster builds
+    "forceConsistentCasingInFileNames": true, // Ensure consistent casing in file names
+    "downlevelIteration": true,        // Enable downlevel iteration for compatibility with ES5
+    "noEmitOnError": true,             // Do not emit output files if there are errors
+    "noUnusedLocals": true,            // Report errors on unused local variables
+    "noUnusedParameters": true,        // Report errors on unused function parameters
+    "noImplicitAny": true,             // Raise errors on expressions and declarations with an implied 'any' type
+    "noImplicitThis": true,            // Raise errors on 'this' expressions with an implied 'any' type
+    "noImplicitReturns": true,         // Raise errors if not all code paths return a value
+    "noFallthroughCasesInSwitch": true, // Report errors on fallthrough cases in switch statements
+    "jsx": "react-jsx"                 // Enable JSX support for React 17+ (use "react" for older versions)
+
+  },
+  "include": [
+    "src" // Adjust this to your source directory
+  ],
+  "exclude": [
+    "node_modules", // Exclude node_modules directory
+    "build"         // Exclude build directory if using a build tool
+  ]
+}
